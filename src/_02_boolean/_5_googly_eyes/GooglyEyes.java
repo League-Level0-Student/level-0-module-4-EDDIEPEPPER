@@ -36,13 +36,14 @@ import processing.core.PImage;
  *    within. When mouseX and mouseY goes outside of these bounds, set it back
  *    to the boundary. Put this code before you draw the pupils.
  */
-
+//bottem mousey201 top mousey172 left mousex356 right mousex384
 public class GooglyEyes extends PApplet {
     static final int WIDTH = 800;
     static final int HEIGHT = 600;
     
     PImage face;
-   
+   int pupilX = 0;
+		   int pupilY = 0;
     @Override
     public void settings() {
         size(WIDTH, HEIGHT);
@@ -56,13 +57,21 @@ public class GooglyEyes extends PApplet {
 
     @Override
     public void draw() {
+    	if(172<mouseY&& mouseY<201&& 349<mouseX&& mouseX<384) {
+    		pupilX=mouseX;
+    		pupilY=mouseY;
+    	}
 background(face);
 fill(255,255,255);
 ellipse(368,185,28,41);
 ellipse(479,200,28,41);
 fill(0, 0, 0);
-ellipse(mouseX,mouseY ,12,12);
-ellipse(mouseX+110,mouseY+15,12,12);
+ellipse(pupilX,pupilY ,12,12);
+ellipse(pupilX+110,pupilY+15,12,12);
+if (mousePressed) {
+print("mousex"+mouseX);
+print("mousey"+mouseY);
+}
     }
 
     static public void main(String[] args) {
